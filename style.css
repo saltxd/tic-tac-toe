@@ -3,6 +3,12 @@ body{
     color: white;
 }
 
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #gameboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
