@@ -50,15 +50,16 @@ const Gameboard = (() => {
           return 'tie';
         }
 
-         // Game is not over yet
+        // Game is not over yet
         return null;
-        };
+    };
 
 
     return {
         getBoard,
         placeSymbol,
-        clearBoard
+        clearBoard,
+        checkForWinner
     };
 })();
 
@@ -109,11 +110,24 @@ cells.forEach(cell => {
       const row = event.target.dataset.row;
       const col = event.target.dataset.col;
       const currentPlayer = gameController.getCurrentPlayer();
-        if (Gameboard.getBoard()[row][col] === '') {
+      const board = Gameboard.getBoard();
+
+        if (board[row][col] === '') {
           Gameboard.placeSymbol(row, col, currentPlayer.symbol);
           render();
           gameController.switchPlayer();
-        }
+
+          const winner = Gameboard.checkForWinner();
+          if (winner !== null) {
+            if (winner === 'tie') {
+                alert('It\'s a tie!');
+            } else {
+                alert(`${winner} wins!`);
+            }
+            Gameboard.clearBoard();
+            render();
+            }
+          }
     });
   });
 //render the updated game board
