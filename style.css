@@ -2,3 +2,20 @@ body{
     background-color: #022c22;
     color: white;
 }
+
+#gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 454px;
+    height: 454px;
+  }
+
+  .cell {
+    border: 1px solid black;
+    font-size: 48px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
