@@ -1,8 +1,8 @@
 const Gameboard = (() => {
     let board = [
-        ['', '', ''],
-        ['', '', ''],
-        ['', '', '']
+        ['X', 'O', ''],
+        ['', 'X', ''],
+        ['O', '', 'X']
     ];
 
     const getBoard = () => {
@@ -50,3 +50,15 @@ const gameController = (() => {
         switchPlayer
     };
 })();
+
+const render = () => {
+    const board = Gameboard.getBoard();
+    const cells = document.querySelectorAll('#gameboard .cell')
+    for (let i = 0; i < cells.length; i++) {
+        const row = Math.floor(i / 3);
+        const col = i % 3;
+        cells[i].textContent = board[row][col];
+    }
+}
+
+window.addEventListener('load', render);
