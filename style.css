@@ -1,6 +1,15 @@
+:root{
+    --background-color: #022c22;
+    --cell-hover-background: #34d399;
+    --cell-background-color: #059669;
+    --font-color: #ecfdf5;
+    --font: 'Poppins', sans-serif;
+}
+
 body{
-    background-color: #022c22;
-    color: white;
+    background-color: var(--background-color);
+    font-family: var(--font);
+    color: var(--font-color);
 }
 
 /* Header */
@@ -16,6 +25,12 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+
+.message{
+    font-size: 50px;
+    padding: 20px 0;
 }
 
 #gameboard {
@@ -33,11 +48,11 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #059669;
+    background-color: var(--cell-background-color);
   }
 
   .cell:hover {
-    background-color: #34d399;
+    background-color: var(--cell-hover-background);
   }
 
   /* Footer */
