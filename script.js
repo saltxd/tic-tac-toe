@@ -133,3 +133,11 @@ cells.forEach(cell => {
 //render the updated game board
 render();
 
+const resetButton = document.getElementById('reset-button');
+
+const resetGame = () => {
+    Gameboard.clearBoard();
+    render();
+}
+
+resetButton.addEventListener('click', resetGame);
