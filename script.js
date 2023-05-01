@@ -91,10 +91,12 @@ const gameController = (() => {
     };
 })();
 
+const turnIndicator = document.getElementById('turn-indicator');
 
 const render = () => {
     const board = Gameboard.getBoard();
     const cells = document.querySelectorAll('#gameboard .cell')
+    turnIndicator.textContent = `${gameController.getCurrentPlayer().name}'s Turn`;
       for (let i = 0; i < cells.length; i++) {
         const row = Math.floor(i / 3);
         const col = i % 3;
