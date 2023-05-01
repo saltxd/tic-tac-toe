@@ -85,9 +85,14 @@ const gameController = (() => {
         return currentPlayer;
     }
 
+    const reset = () => {
+      currentPlayer = player1;
+    }
+
     return {
         switchPlayer,
-        getCurrentPlayer
+        getCurrentPlayer,
+        reset
     };
 })();
 
@@ -96,7 +101,8 @@ const turnIndicator = document.getElementById('turn-indicator');
 const render = () => {
     const board = Gameboard.getBoard();
     const cells = document.querySelectorAll('#gameboard .cell')
-    turnIndicator.textContent = `${gameController.getCurrentPlayer().name}'s Turn`;
+    const nextPlayer = gameController.getCurrentPlayer() === player1 ? player2 : player1;
+    turnIndicator.textContent = `Next player: ${nextPlayer.name} (${nextPlayer.symbol})`;
       for (let i = 0; i < cells.length; i++) {
         const row = Math.floor(i / 3);
         const col = i % 3;
@@ -139,7 +145,9 @@ const resetButton = document.getElementById('reset-button');
 
 const resetGame = () => {
     Gameboard.clearBoard();
+    gameController.reset();
+    turnIndicator.textContent = `Next player: ${player1.name} (${player1.symbol})`;
     render();
-}
+};
 
 resetButton.addEventListener('click', resetGame);
