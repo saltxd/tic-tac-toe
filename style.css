@@ -46,7 +46,7 @@ header{
 
   .cell {
     border: 1px solid black;
-    font-size: 48px;
+    font-size: 65px;
     text-align: center;
     display: flex;
     justify-content: center;
